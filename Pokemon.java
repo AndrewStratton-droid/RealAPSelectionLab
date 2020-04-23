@@ -1,4 +1,3 @@
-
 public class Pokemon extends Generics{
 	
 	//declaring variables
