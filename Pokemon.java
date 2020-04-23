@@ -61,5 +61,12 @@ public class Pokemon extends Generics{
 		};
 		return pok;
 	}
+	
+	public static void main(String[] args)
+	{
+		Generics[] pok = pokemonData();
+		for(Generics p : pok)
+			System.out.println(p);
+	}
 }
 
