@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class isort here.
@@ -10,19 +11,24 @@ public class Sorts
     enum ListType {Standard, Bubble, Insert};
     ListType listType = ListType.Standard;
     
+    private int size;
     private int[] list;
     private int[] blist; int bcompares = 0; int bswaps = 0;
-    private int[] ilist; int icompares = 0; int iswaps = 0;
+    private static int[] ilist; int icompares = 0; int iswaps = 0;
+    private static ArrayList<Integer> sortedDexNum = new ArrayList<Integer>();
+    private static ArrayList<Pokemon> finalArrayList = new ArrayList<Pokemon>();
 
     /**
      * Constructor for objects of class isort
      */
     public Sorts()
     {
-        int size = 50;
+    	size = PokeArrayList.ArrayList().size();
         list = new int[size];
-        for (int i = 0; i < list.length; i++)
-            list[i] = (int)(Math.random() * size) + 1;
+        for (int i = 0; i < size; i++)
+        {
+            list[i] = PokeArrayList.ArrayList().get(i);
+        }
             
         blist = list.clone();
         this.BubbleSort();
@@ -109,9 +115,26 @@ public class Sorts
             this.iswaps++;  // increment swap counter
             
         }
-        
+ 
         return ilist;
     }
+    public static ArrayList<Pokemon> convert(ArrayList<Integer> arr)
+    {
+		for(int j = 0; j < arr.size(); j++)
+		{
+			for(Pokemon x : PokeArrayList.pokeArray)
+			{
+				if(x.pokeDexNum == arr.get(j))
+				{
+					finalArrayList.add(x);
+				}
+			}
+		}
+		
+		return finalArrayList;
+    
+    }
+
 
     /**
      *
@@ -119,7 +142,7 @@ public class Sorts
     public static void main(String[] args)
     {
         // Original List
-        Sorts is = new Sorts();
+        Sorts is = new Sorts(); //populates PokeArray in PokeArrayList
         System.out.println(is);
         
         // Bubble Sort
@@ -129,5 +152,14 @@ public class Sorts
         // Insertion Sort
         is.listType = ListType.Insert;
         System.out.println(is);
+        
+        for (int i = 0; i < ilist.length; i++)
+        {
+        	sortedDexNum.add(ilist[i]);
+        }
+       
+        finalArrayList = convert(sortedDexNum); //finalArrayList is the sorted Pokemon 
+        System.out.print(finalArrayList); 
+     
     }
 }

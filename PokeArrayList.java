@@ -2,7 +2,22 @@ import java.util.ArrayList;
 
 public class PokeArrayList {
 	
-	private static ArrayList<Pokemon> pokeArray = new ArrayList<Pokemon>();
+	public static ArrayList<Pokemon> pokeArray;
+	private static ArrayList<Integer> pokeDexNumArrayList;
+	
+	public static ArrayList<Integer> ArrayList()
+	{
+		pokeArray = Pokemon.pokemonData();
+		pokeDexNumArrayList = new ArrayList<Integer>();
+		
+		for(Pokemon x : pokeArray)
+		{
+			pokeDexNumArrayList.add(x.pokeDexNum);
+		}
+		
+		return pokeDexNumArrayList;
+		
+	}
 	
 	public static void addPokeArray(Pokemon temp)
 	{
