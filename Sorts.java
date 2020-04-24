@@ -60,12 +60,15 @@ public class Sorts
                         + " Compares: " + this.icompares
                         + " Swaps: " + this.iswaps);
                       list = this.ilist;
+                      break;
             default:
                 System.out.println("Selection Sort -- "
-                  + " Operations: " + (this.scompares + this.sswaps)
-                  + " Compares: " + this.scompares
-                  + " Swaps: " + this.sswaps);
-                list = this.slist;
+                        + " Operations: " + (this.scompares + this.sswaps)
+                        + " Compares: " + this.scompares
+                        + " Swaps: " + this.sswaps);
+                      list = this.slist;
+                      break;
+
         }
                 
         String output = "[";
