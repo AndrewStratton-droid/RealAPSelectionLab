@@ -8,13 +8,14 @@ import java.util.ArrayList;
  */
 public class Sorts
 {
-    enum ListType {Standard, Bubble, Insert};
+    enum ListType {Standard, Bubble, Insert, Selection};
     ListType listType = ListType.Standard;
     
     private int size;
     private int[] list;
     private int[] blist; int bcompares = 0; int bswaps = 0;
     private static int[] ilist; int icompares = 0; int iswaps = 0;
+    private static int[] slist; int scompares = 0; int sswaps = 0;
     private static ArrayList<Integer> sortedDexNum = new ArrayList<Integer>();
     private static ArrayList<Pokemon> finalArrayList = new ArrayList<Pokemon>();
 
@@ -34,6 +35,8 @@ public class Sorts
         this.BubbleSort();
         ilist = list.clone();
         this.InsertionSort();
+        slist = list.clone();
+        this.SelectionSort();
     }
     
     public String toString() {
@@ -52,12 +55,17 @@ public class Sorts
                 list = this.blist;
                 break;
             case Insert:
-            default:
                 System.out.println("Insertions Sort -- "
-                  + " Operations: " + (this.icompares + this.iswaps)
-                  + " Compares: " + this.icompares
-                  + " Swaps: " + this.iswaps);
-                list = this.ilist;
+                        + " Operations: " + (this.icompares + this.iswaps)
+                        + " Compares: " + this.icompares
+                        + " Swaps: " + this.iswaps);
+                      list = this.ilist;
+            default:
+                System.out.println("Selection Sort -- "
+                  + " Operations: " + (this.scompares + this.sswaps)
+                  + " Compares: " + this.scompares
+                  + " Swaps: " + this.sswaps);
+                list = this.slist;
         }
                 
         String output = "[";
@@ -117,7 +125,35 @@ public class Sorts
         }
  
         return ilist;
+        
+     
     }
+    
+    //Add selection sort 
+    
+    private int[] SelectionSort() {
+    	
+    	for (int i = 0; i < slist.length - 1; i++) {
+    		
+            int k = i; 
+            for (int j = i+1; j < slist.length; j++) 
+                if (slist[j] < slist[k]) 
+                    k = j; 
+  
+            // Swap the found minimum element with the first 
+            // element 
+            int swap = slist[k]; 
+            slist[k] = slist[i]; 
+            slist[i] = swap;
+            
+            this.icompares++; // compare counter
+            this.iswaps++; // shift counter
+    	}
+            return slist;
+    	
+    	
+    }
+    
     public static ArrayList<Pokemon> convert(ArrayList<Integer> arr)
     {
 		for(int j = 0; j < arr.size(); j++)
@@ -151,6 +187,10 @@ public class Sorts
         
         // Insertion Sort
         is.listType = ListType.Insert;
+        System.out.println(is);
+        
+        //Selection Sort
+        is.listType = ListType.Selection;
         System.out.println(is);
         
         for (int i = 0; i < ilist.length; i++)
