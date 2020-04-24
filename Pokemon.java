@@ -49,6 +49,18 @@ public class Pokemon extends Generics{
 				new Pokemon("Poliwhirl", 61),
 				new Pokemon("Seadra", 117),
 				new Pokemon("Slowpoke", 79),
+				new Pokemon("Slowbro", 80),
+				new Pokemon("Seel", 86),
+				new Pokemon("Shellder", 90),
+				new Pokemon("Krabby", 98),
+				new Pokemon("Kingler", 99),
+				new Pokemon("Horsea", 116),
+				new Pokemon("Seadra", 117),
+				new Pokemon("Goldeen", 118),
+				new Pokemon("Seaking", 119),
+				new Pokemon("Staryu", 120),
+				new Pokemon("Magikarp", 129),
+				new Pokemon("Vaporeon", 134)
 		};
 		
 		for(Pokemon x : pok)
